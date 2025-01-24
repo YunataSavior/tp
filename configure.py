@@ -1506,7 +1506,7 @@ config.libs = [
     ActorRel(NonMatching, "d_a_obj_kanban2"),
     ActorRel(NonMatching, "d_a_obj_kbacket"),
     ActorRel(MatchingFor("GZ2E01"), "d_a_obj_kgate"),
-    ActorRel(NonMatching, "d_a_obj_klift00"),
+    ActorRel(Equivalent, "d_a_obj_klift00"), # vtable order
     ActorRel(NonMatching, "d_a_obj_ktOnFire"),
     ActorRel(MatchingFor("GZ2E01"), "d_a_obj_ladder"),
     ActorRel(MatchingFor("GZ2E01"), "d_a_obj_lv2Candle"),
@@ -1799,7 +1799,7 @@ config.libs = [
     ActorRel(NonMatching, "d_a_npc_zrc"),
     ActorRel(NonMatching, "d_a_npc_zrz"),
     ActorRel(MatchingFor("GZ2E01"), "d_a_obj_Lv5Key"),
-    ActorRel(NonMatching, "d_a_obj_Turara"),
+    ActorRel(Equivalent, "d_a_obj_Turara"),
     ActorRel(NonMatching, "d_a_obj_TvCdlst"),
     ActorRel(NonMatching, "d_a_obj_Y_taihou"),
     ActorRel(NonMatching, "d_a_obj_amiShutter"),
@@ -1913,8 +1913,8 @@ config.libs = [
     ActorRel(NonMatching, "d_a_obj_knBullet"),
     ActorRel(NonMatching, "d_a_obj_kshutter"),
     ActorRel(NonMatching, "d_a_obj_kuwagata"),
-    ActorRel(NonMatching, "d_a_obj_kwheel00"),
-    ActorRel(NonMatching, "d_a_obj_kwheel01"),
+    ActorRel(Equivalent, "d_a_obj_kwheel00"), # weak func order
+    ActorRel(Equivalent, "d_a_obj_kwheel01"), # weak func order
     ActorRel(NonMatching, "d_a_obj_kznkarm"),
     ActorRel(NonMatching, "d_a_obj_laundry"),
     ActorRel(NonMatching, "d_a_obj_laundry_rope"),
