@@ -31,18 +31,22 @@ public:
     /* 80BA0C1C */ int Delete();
     /* 80BA0FA4 */ ~daObjYtaihou_c();
 
-    void setAddAngle(u8 add_angle) { mAddAngle = add_angle; }
+    void setAddAngle(s8 add_angle) { mAddAngle = add_angle; }
+    u32 getIronBallId() { return mIronBallId; }
+    void startBomb() { mStartBomb = 0xffff; }
 
 private:
     ///* 0x5a0 */ request_of_phase_process_class mPhaseReq;
     /* 0x5a8 */ u8 field_0x5a8[0x5b8 - 0x5a8];
     /* 0x5b8 */ Mtx mMtx;
     /* 0x5e8 */ u8 field_0x5e8[0x764 - 0x5e8];
-    /* 0x764 */ u32 field_0x764;
-    /* 0x768 */ u8 field_0x768[0x774 - 0x768];
+    /* 0x764 */ u32 mIronBallId;
+    /* 0x768 */ u8 field_0x768[0x770 - 0x768];
+    /* 0x770 */ s16 mStartBomb;
+    /* 0x768 */ u8 field_0x772[0x774 - 0x772];
     /* 0x774 */ u8 field_0x774;
     /* 0x774 */ u8 field_0x775;
-    /* 0x774 */ u8 mAddAngle;
+    /* 0x774 */ s8 mAddAngle;
 };
 
 STATIC_ASSERT(sizeof(daObjYtaihou_c) == 0x778);

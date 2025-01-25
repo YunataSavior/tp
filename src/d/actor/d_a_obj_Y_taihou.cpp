@@ -125,58 +125,48 @@ extern "C" void __register_global_object();
 // Declarations:
 //
 
-/* ############################################################################################## */
-/* 80BA1154-80BA1158 000000 0004+00 4/4 0/0 0/0 .rodata          @3695 */
-SECTION_RODATA static f32 const lit_3695 = 150.0f;
-COMPILER_STRIP_GATE(0x80BA1154, &lit_3695);
-
-/* 80BA1158-80BA115C 000004 0004+00 0/1 0/0 0/0 .rodata          @3696 */
-#pragma push
-#pragma force_active on
-SECTION_RODATA static f32 const lit_3696 = 200.0f;
-COMPILER_STRIP_GATE(0x80BA1158, &lit_3696);
-#pragma pop
-
-/* 80BA115C-80BA1160 000008 0004+00 0/3 0/0 0/0 .rodata          @3697 */
-#pragma push
-#pragma force_active on
-SECTION_RODATA static f32 const lit_3697 = 1.0f;
-COMPILER_STRIP_GATE(0x80BA115C, &lit_3697);
-#pragma pop
-
-/* 80BA1160-80BA1164 00000C 0004+00 0/3 0/0 0/0 .rodata          @3698 */
-#pragma push
-#pragma force_active on
-SECTION_RODATA static f32 const lit_3698 = -1.0f;
-COMPILER_STRIP_GATE(0x80BA1160, &lit_3698);
-#pragma pop
-
 /* 80B9FAEC-80B9FC40 0000EC 0154+00 1/1 0/0 0/0 .text
  * ccHitCallback__FP10fopAc_ac_cP12dCcD_GObjInfP10fopAc_ac_cP12dCcD_GObjInf */
 static void ccHitCallback(fopAc_ac_c* param_0, dCcD_GObjInf* param_1, fopAc_ac_c* param_2,
                               dCcD_GObjInf* param_3) {
     // NONMATCHING
+    daObjYtaihou_c* i_this = static_cast<daObjYtaihou_c*>(param_0);
+    daObjCarry_c* pCarry = static_cast<daObjCarry_c*>(param_2);
+    if (fopAcM_checkCarryNow(i_this) == 0
+      || (fopAcM_searchActorDistanceY(i_this, pCarry) >= 150.0f
+      && fopAcM_searchActorDistanceY(i_this, pCarry) <= 200.0f)) {
+        if (fopAcM_GetProfName(i_this) == 0x2fc) {
+            int iVar1 = i_this->getIronBallId();
+            if (iVar1 == 0xffff && pCarry->getType() == 3) {
+                i_this->setIronBall(pCarry);
+                fopAcM_seStartCurrent(i_this, 0x801c9, 0);
+            }
+        } else if (fopAcM_GetProfName(i_this) == 0x221) {
+            i_this->startBomb();
+            fopAcM_delete(i_this);
+            fopAcM_seStartCurrent(i_this, 0x801c9, 0);
+        }
+    }
 }
 
 /* 80B9FC40-80B9FD20 000240 00E0+00 1/1 0/0 0/0 .text
  * pushPullcallBack__FP10fopAc_ac_cP10fopAc_ac_csQ29dBgW_Base13PushPullLabel */
 static daObjYtaihou_c* pushPullcallBack(fopAc_ac_c* param_0, fopAc_ac_c* param_1, s16 param_2,
                                         dBgW_Base::PushPullLabel label) {
-    // NONMATCHING
-    if (cLib_checkBit(label, dBgW_Base::PPLABEL_PUSH) != 0) {
+    if (cLib_checkBit(label, dBgW_Base::PPLABEL_3)) {
         cXyz my_vec = param_1->current.pos - param_0->current.pos;
-        mDoMtx_stack_c::YrotS(-param_1->shape_angle.y);
+        mDoMtx_stack_c::YrotS(-param_0->shape_angle.y);
         mDoMtx_stack_c::multVec(&my_vec, &my_vec);
-        u8 my_ubit;
-        if (my_vec.x <= 0.0f) {
-            my_ubit = -1;
-        } else {
+        BOOL my_ubit;
+        if (my_vec.x > 0.0f) {
             my_ubit = 1;
+        } else {
+            my_ubit = -1;
         }
-        if (cLib_distanceAngleS(param_0->current.pos.y, param_2) > 0x4000) {
+        if (cLib_distanceAngleS(param_0->shape_angle.y, param_2) > 0x4000) {
             my_ubit = -my_ubit;
         }
-        if (cLib_checkBit(label, dBgW_Base::PPLABEL_PUSH) != 0) {
+        if (cLib_checkBit(label, dBgW_Base::PPLABEL_PULL)) {
             my_ubit = -my_ubit;
         }
         static_cast<daObjYtaihou_c*>(param_0)->setAddAngle(my_ubit);
@@ -219,7 +209,7 @@ int daObjYtaihou_c::create1st() {
 /* 80B9FEB0-80B9FF08 0004B0 0058+00 3/3 0/0 0/0 .text
  * setIronBall__14daObjYtaihou_cFP12daObjCarry_c                */
 void daObjYtaihou_c::setIronBall(daObjCarry_c* obj) {
-    field_0x764 = fopAcM_GetID(obj);
+    mIronBallId = fopAcM_GetID(obj);
     obj->offDraw();
     obj->startCtrl();
     obj->current.pos = current.pos;
