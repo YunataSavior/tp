@@ -43,10 +43,11 @@ private:
     /* 0x764 */ u32 mIronBallId;
     /* 0x768 */ u8 field_0x768[0x770 - 0x768];
     /* 0x770 */ s16 mStartBomb;
-    /* 0x768 */ u8 field_0x772[0x774 - 0x772];
-    /* 0x774 */ u8 field_0x774;
-    /* 0x774 */ u8 field_0x775;
-    /* 0x774 */ s8 mAddAngle;
+    /* 0x768 */ s16 field_0x772;
+    /* 0x774 */ s8 field_0x774;
+    /* 0x775 */ u8 field_0x775;
+    /* 0x776 */ s8 mAddAngle;
+    /* 0x777 */ s8 field_0x777;
 };
 
 STATIC_ASSERT(sizeof(daObjYtaihou_c) == 0x778);

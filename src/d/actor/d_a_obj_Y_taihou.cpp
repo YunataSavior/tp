@@ -9,117 +9,8 @@
 #include "d/actor/d_a_obj_carry.h"
 #include "Z2AudioLib/Z2Instances.h"
 #include "SSystem/SComponent/c_math.h"
+#include "d/actor/d_a_player.h"
 
-//
-// Forward References:
-//
-
-extern "C" static void ccHitCallback__FP10fopAc_ac_cP12dCcD_GObjInfP10fopAc_ac_cP12dCcD_GObjInf();
-extern "C" static void pushPullcallBack__FP10fopAc_ac_cP10fopAc_ac_csQ29dBgW_Base13PushPullLabel();
-extern "C" void __dt__4cXyzFv();
-extern "C" static void searchIronBallCallback__FPvPv();
-extern "C" void create1st__14daObjYtaihou_cFv();
-extern "C" void setIronBall__14daObjYtaihou_cFP12daObjCarry_c();
-extern "C" void getEvent__14daObjYtaihou_cFUc();
-extern "C" void loadAngle__14daObjYtaihou_cFv();
-extern "C" void saveAngle__14daObjYtaihou_cFv();
-extern "C" void setNextAngle__14daObjYtaihou_cFv();
-extern "C" void setMtx__14daObjYtaihou_cFv();
-extern "C" void rotateCheck__14daObjYtaihou_cFv();
-extern "C" void shotCheck__14daObjYtaihou_cFv();
-extern "C" void eventStart__14daObjYtaihou_cFv();
-extern "C" void CreateHeap__14daObjYtaihou_cFv();
-extern "C" void Create__14daObjYtaihou_cFv();
-extern "C" void Execute__14daObjYtaihou_cFPPA3_A4_f();
-extern "C" void Draw__14daObjYtaihou_cFv();
-extern "C" void Delete__14daObjYtaihou_cFv();
-extern "C" static void daObjYtaihou_create1st__FP14daObjYtaihou_c();
-extern "C" void __dt__8cM3dGCylFv();
-extern "C" void __dt__8cM3dGAabFv();
-extern "C" void __dt__10dCcD_GSttsFv();
-extern "C" static void daObjYtaihou_MoveBGDelete__FP14daObjYtaihou_c();
-extern "C" static void daObjYtaihou_MoveBGExecute__FP14daObjYtaihou_c();
-extern "C" static void daObjYtaihou_MoveBGDraw__FP14daObjYtaihou_c();
-extern "C" void __dt__10cCcD_GSttsFv();
-extern "C" void __dt__17dEvLib_callback_cFv();
-extern "C" bool eventStart__17dEvLib_callback_cFv();
-extern "C" bool eventRun__17dEvLib_callback_cFv();
-extern "C" bool eventEnd__17dEvLib_callback_cFv();
-extern "C" void __dt__14daObjYtaihou_cFv();
-extern "C" void func_80BA1118(void* _this, s16*);
-extern "C" static void func_80BA1134();
-extern "C" static void func_80BA113C();
-extern "C" extern char const* const d_a_obj_Y_taihou__stringBase0;
-
-//
-// External References:
-//
-
-extern "C" void mDoMtx_YrotS__FPA4_fs();
-extern "C" void mDoMtx_YrotM__FPA4_fs();
-extern "C" void transM__14mDoMtx_stack_cFfff();
-extern "C" void mDoExt_modelUpdateDL__FP8J3DModel();
-extern "C" void mDoExt_J3DModel__create__FP12J3DModelDataUlUl();
-extern "C" void __dt__10fopAc_ac_cFv();
-extern "C" void fopAcIt_Judge__FPFPvPv_PvPv();
-extern "C" void fopAcM_delete__FP10fopAc_ac_c();
-extern "C" void fopAcM_setCullSizeBox__FP10fopAc_ac_cffffff();
-extern "C" void fopAcM_searchActorAngleY__FPC10fopAc_ac_cPC10fopAc_ac_c();
-extern "C" void fopAcM_searchActorDistance2__FPC10fopAc_ac_cPC10fopAc_ac_c();
-extern "C" void fopAcM_searchActorDistanceXZ__FPC10fopAc_ac_cPC10fopAc_ac_c();
-extern "C" void fpcSch_JudgeByID__FPvPv();
-extern "C" void dComIfG_resLoad__FP30request_of_phase_process_classPCc();
-extern "C" void dComIfG_resDelete__FP30request_of_phase_process_classPCc();
-extern "C" void dComIfGp_getReverb__Fi();
-extern "C" void onSwitch__10dSv_info_cFii();
-extern "C" void offSwitch__10dSv_info_cFii();
-extern "C" void isSwitch__10dSv_info_cCFii();
-extern "C" void getRes__14dRes_control_cFPCclP11dRes_info_ci();
-extern "C" void eventUpdate__17dEvLib_callback_cFv();
-extern "C" void orderEvent__17dEvLib_callback_cFiii();
-extern "C" void
-set__13dPa_control_cFUcUsPC4cXyzPC12dKy_tevstr_cPC5csXyzPC4cXyzUcP18dPa_levelEcallBackScPC8_GXColorPC8_GXColorPC4cXyzf();
-extern "C" void
-set__13dPa_control_cFUlUcUsPC4cXyzPC12dKy_tevstr_cPC5csXyzPC4cXyzUcP18dPa_levelEcallBackScPC8_GXColorPC8_GXColorPC4cXyzf();
-extern "C" void StartShock__12dVibration_cFii4cXyz();
-extern "C" void dBgS_MoveBGProc_TypicalRotY__FP4dBgWPvRC13cBgS_PolyInfobP4cXyzP5csXyzP5csXyz();
-extern "C" void __ct__16dBgS_MoveBgActorFv();
-extern "C" bool IsDelete__16dBgS_MoveBgActorFv();
-extern "C" bool ToFore__16dBgS_MoveBgActorFv();
-extern "C" bool ToBack__16dBgS_MoveBgActorFv();
-extern "C" void
-MoveBGCreate__16dBgS_MoveBgActorFPCciPFP4dBgWPvRC13cBgS_PolyInfobP4cXyzP5csXyzP5csXyz_vUlPA3_A4_f();
-extern "C" void MoveBGDelete__16dBgS_MoveBgActorFv();
-extern "C" void MoveBGExecute__16dBgS_MoveBgActorFv();
-extern "C" void __ct__10dCcD_GSttsFv();
-extern "C" void Init__9dCcD_SttsFiiP10fopAc_ac_c();
-extern "C" void __ct__12dCcD_GObjInfFv();
-extern "C" void __dt__12dCcD_GObjInfFv();
-extern "C" void Set__8dCcD_CylFRC11dCcD_SrcCyl();
-extern "C" void settingTevStruct__18dScnKy_env_light_cFiP4cXyzP12dKy_tevstr_c();
-extern "C" void setLightTevColorType_MAJI__18dScnKy_env_light_cFP12J3DModelDataP12dKy_tevstr_c();
-extern "C" void Set__4cCcSFP8cCcD_Obj();
-extern "C" void __mi__4cXyzCFRC3Vec();
-extern "C" void SetC__8cM3dGCylFRC4cXyz();
-extern "C" void cLib_chaseAngleS__FPsss();
-extern "C" void cLib_distanceAngleS__Fss();
-extern "C" void seStart__7Z2SeMgrF10JAISoundIDPC3VecUlScffffUc();
-extern "C" void seStartLevel__7Z2SeMgrF10JAISoundIDPC3VecUlScffffUc();
-extern "C" void __dl__FPv();
-extern "C" void _savegpr_28();
-extern "C" void _savegpr_29();
-extern "C" void _restgpr_28();
-extern "C" void _restgpr_29();
-extern "C" extern void* __vt__16dBgS_MoveBgActor[10];
-extern "C" extern void* __vt__8dCcD_Cyl[36];
-extern "C" extern void* __vt__9dCcD_Stts[11];
-extern "C" extern void* __vt__12cCcD_CylAttr[25];
-extern "C" extern void* __vt__14cCcD_ShapeAttr[22];
-extern "C" extern void* __vt__9cCcD_Stts[8];
-extern "C" u8 now__14mDoMtx_stack_c[48];
-extern "C" u8 sincosTable___5JMath[65536];
-extern "C" u8 mAudioMgrPtr__10Z2AudioMgr[4 + 4 /* padding */];
-extern "C" void __register_global_object();
 
 //
 // Declarations:
@@ -174,14 +65,18 @@ static daObjYtaihou_c* pushPullcallBack(fopAc_ac_c* param_0, fopAc_ac_c* param_1
     return (daObjYtaihou_c*) param_0;
 }
 
-/* ############################################################################################## */
-/* 80BA1168-80BA116C 000014 0004+00 1/1 0/0 0/0 .rodata          @3749 */
-SECTION_RODATA static f32 const lit_3749 = 40000.0f;
-COMPILER_STRIP_GATE(0x80BA1168, &lit_3749);
-
 /* 80B9FD5C-80B9FDE8 00035C 008C+00 1/1 0/0 0/0 .text            searchIronBallCallback__FPvPv */
-static void* searchIronBallCallback(void* param_0, void* param_1) {
+static void* searchIronBallCallback(void* arg_lhs, void* arg_rhs) {
     // NONMATCHING
+    if (fopAcM_GetProfName(arg_lhs) == 0x2fc) {
+        daObjYtaihou_c* taihou_rhs = (daObjYtaihou_c*)arg_rhs;
+        if ( ((daObjCarry_c*)arg_lhs)->getType() == 3 && ((daObjCarry_c*)arg_lhs)->isDraw()
+          && fopAcM_searchActorDistance2(taihou_rhs, ((daObjCarry_c*)arg_lhs)) < 40000.0f) {
+            taihou_rhs->setIronBall(((daObjCarry_c*)arg_lhs));
+            return arg_lhs;
+        }
+    }
+    return NULL;
 }
 
 /* 80BA11E0-80BA11E4 -00001 0004+00 3/3 0/0 0/0 .data            l_arcName */
@@ -390,17 +285,47 @@ void daObjYtaihou_c::setMtx() {
     mDoMtx_copy(mDoMtx_stack_c::get(), mMtx);
 }
 
-/* ############################################################################################## */
-/* 80BA118C-80BA1190 000038 0004+00 0/1 0/0 0/0 .rodata          @3915 */
-#pragma push
-#pragma force_active on
-SECTION_RODATA static f32 const lit_3915 = 10.0f;
-COMPILER_STRIP_GATE(0x80BA118C, &lit_3915);
-#pragma pop
-
 /* 80BA0208-80BA045C 000808 0254+00 1/1 0/0 0/0 .text            rotateCheck__14daObjYtaihou_cFv */
 void daObjYtaihou_c::rotateCheck() {
     // NONMATCHING
+    if (shape_angle.y != current.angle.y) {
+        cLib_chaseAngleS(&current.angle.x, 0xbe, 5);
+        if (cLib_chaseAngleS(&shape_angle.y, current.angle.z, current.angle.x)) {
+            field_0x772 = 0;
+            daPy_getLinkPlayerActorClass()->offPushPullKeep();
+            field_0x774 = -1;
+            fopAcM_seStartCurrent(this, 0x801cb, 0);
+        } else {
+            fopAcM_seStartCurrentLevel(this, 0x801ca, 0);
+        }
+    } else if (field_0x774) {
+        daPy_py_c* player_class = daPy_getLinkPlayerActorClass();
+        if (field_0x774 < 0) {
+            if (player_class->getBaseAnimeFrame() > 10.0f) {
+                field_0x774 = 1;
+            }
+        } else {
+            if (player_class->getBaseAnimeFrame() <= 10.0f) {
+                field_0x774 = 0;
+            }
+        }
+    } else if (mAddAngle == 0 || mAddAngle != field_0x777) {
+        field_0x772 = 0;
+    } else if (mStartBomb == 0 && ++field_0x772 > 10) {
+        // TODO.
+#if 0
+iVar3 = (int)(char)this[0x77e] + (uint)(byte)this[0x77d] + 4;
+cVar2 = (char)(iVar3 >> 0x1f);
+this[0x77d] = (daObjYtaihou_c)
+            ((cVar2 * '\x04' |
+            (byte)(((int)(char)this[0x77e] + (uint)(byte)this[0x77d]) * 0x40000000 +
+                    (iVar3 >> 0x1f) >> 0x1e)) - cVar2);
+#endif
+        current.angle.x = 0;
+        setNextAngle();
+        saveAngle();
+        daPy_getLinkPlayerActorClass()->onPushPullKeep();
+    }
 }
 
 /* ############################################################################################## */
@@ -521,116 +446,12 @@ int daObjYtaihou_c::Delete() {
     // NONMATCHING
 }
 
-/* ############################################################################################## */
-/* 80BA1230-80BA1250 -00001 0020+00 1/0 0/0 0/0 .data            daObjYtaihou_METHODS */
-static actor_method_class daObjYtaihou_METHODS = {
-    (process_method_func)daObjYtaihou_create1st__FP14daObjYtaihou_c,
-    (process_method_func)daObjYtaihou_MoveBGDelete__FP14daObjYtaihou_c,
-    (process_method_func)daObjYtaihou_MoveBGExecute__FP14daObjYtaihou_c,
-    0,
-    (process_method_func)daObjYtaihou_MoveBGDraw__FP14daObjYtaihou_c,
-};
-
-/* 80BA1250-80BA1280 -00001 0030+00 0/0 0/0 1/0 .data            g_profile_Obj_Ytaihou */
-extern actor_process_profile_definition g_profile_Obj_Ytaihou = {
-  fpcLy_CURRENT_e,        // mLayerID
-  3,                      // mListID
-  fpcPi_CURRENT_e,        // mListPrio
-  PROC_Obj_Ytaihou,       // mProcName
-  &g_fpcLf_Method.base,  // sub_method
-  sizeof(daObjYtaihou_c), // mSize
-  0,                      // mSizeOther
-  0,                      // mParameters
-  &g_fopAc_Method.base,   // sub_method
-  635,                    // mPriority
-  &daObjYtaihou_METHODS,  // sub_method
-  0x00044100,             // mStatus
-  fopAc_ACTOR_e,          // mActorType
-  fopAc_CULLBOX_CUSTOM_e, // cullType
-};
-
-/* 80BA1280-80BA128C 0000A0 000C+00 3/3 0/0 0/0 .data            __vt__10cCcD_GStts */
-SECTION_DATA extern void* __vt__10cCcD_GStts[3] = {
-    (void*)NULL /* RTTI */,
-    (void*)NULL,
-    (void*)__dt__10cCcD_GSttsFv,
-};
-
-/* 80BA128C-80BA1298 0000AC 000C+00 2/2 0/0 0/0 .data            __vt__10dCcD_GStts */
-SECTION_DATA extern void* __vt__10dCcD_GStts[3] = {
-    (void*)NULL /* RTTI */,
-    (void*)NULL,
-    (void*)__dt__10dCcD_GSttsFv,
-};
-
-/* 80BA1298-80BA12A4 0000B8 000C+00 3/3 0/0 0/0 .data            __vt__8cM3dGCyl */
-SECTION_DATA extern void* __vt__8cM3dGCyl[3] = {
-    (void*)NULL /* RTTI */,
-    (void*)NULL,
-    (void*)__dt__8cM3dGCylFv,
-};
-
-/* 80BA12A4-80BA12B0 0000C4 000C+00 3/3 0/0 0/0 .data            __vt__8cM3dGAab */
-SECTION_DATA extern void* __vt__8cM3dGAab[3] = {
-    (void*)NULL /* RTTI */,
-    (void*)NULL,
-    (void*)__dt__8cM3dGAabFv,
-};
-
-/* 80BA12B0-80BA12C8 0000D0 0018+00 3/3 0/0 0/0 .data            __vt__17dEvLib_callback_c */
-SECTION_DATA extern void* __vt__17dEvLib_callback_c[6] = {
-    (void*)NULL /* RTTI */,
-    (void*)NULL,
-    (void*)__dt__17dEvLib_callback_cFv,
-    (void*)eventStart__17dEvLib_callback_cFv,
-    (void*)eventRun__17dEvLib_callback_cFv,
-    (void*)eventEnd__17dEvLib_callback_cFv,
-};
-
-/* 80BA12C8-80BA1310 0000E8 0048+00 2/2 0/0 0/0 .data            __vt__14daObjYtaihou_c */
-SECTION_DATA extern void* __vt__14daObjYtaihou_c[18] = {
-    (void*)NULL /* RTTI */,
-    (void*)NULL,
-    (void*)CreateHeap__14daObjYtaihou_cFv,
-    (void*)Create__14daObjYtaihou_cFv,
-    (void*)Execute__14daObjYtaihou_cFPPA3_A4_f,
-    (void*)Draw__14daObjYtaihou_cFv,
-    (void*)Delete__14daObjYtaihou_cFv,
-    (void*)IsDelete__16dBgS_MoveBgActorFv,
-    (void*)ToFore__16dBgS_MoveBgActorFv,
-    (void*)ToBack__16dBgS_MoveBgActorFv,
-    (void*)NULL,
-    (void*)NULL,
-    (void*)func_80BA113C,
-    (void*)func_80BA1134,
-    (void*)eventRun__17dEvLib_callback_cFv,
-    (void*)eventEnd__17dEvLib_callback_cFv,
-    (void*)eventStart__14daObjYtaihou_cFv,
-    (void*)__dt__14daObjYtaihou_cFv,
-};
-
 /* 80BA0C88-80BA0DA4 001288 011C+00 1/0 0/0 0/0 .text daObjYtaihou_create1st__FP14daObjYtaihou_c
  */
-static void daObjYtaihou_create1st(daObjYtaihou_c* param_0) {
+static void daObjYtaihou_create1st(daObjYtaihou_c* i_this) {
     // NONMATCHING
-}
-
-/* 80BA0DA4-80BA0DEC 0013A4 0048+00 1/0 0/0 0/0 .text            __dt__8cM3dGCylFv */
-// cM3dGCyl::~cM3dGCyl() {
-extern "C" void __dt__8cM3dGCylFv() {
-    // NONMATCHING
-}
-
-/* 80BA0DEC-80BA0E34 0013EC 0048+00 1/0 0/0 0/0 .text            __dt__8cM3dGAabFv */
-// cM3dGAab::~cM3dGAab() {
-extern "C" void __dt__8cM3dGAabFv() {
-    // NONMATCHING
-}
-
-/* 80BA0E34-80BA0E90 001434 005C+00 1/0 0/0 0/0 .text            __dt__10dCcD_GSttsFv */
-// dCcD_GStts::~dCcD_GStts() {
-extern "C" void __dt__10dCcD_GSttsFv() {
-    // NONMATCHING
+    fopAcM_SetupActor(i_this, daObjYtaihou_c);
+    i_this->create1st();
 }
 
 /* 80BA0E90-80BA0EB0 001490 0020+00 1/0 0/0 0/0 .text
@@ -651,54 +472,36 @@ static void daObjYtaihou_MoveBGDraw(daObjYtaihou_c* param_0) {
     // NONMATCHING
 }
 
-/* 80BA0EFC-80BA0F44 0014FC 0048+00 1/0 0/0 0/0 .text            __dt__10cCcD_GSttsFv */
-// cCcD_GStts::~cCcD_GStts() {
-extern "C" void __dt__10cCcD_GSttsFv() {
-    // NONMATCHING
-}
+/* ############################################################################################## */
+/* 80BA1230-80BA1250 -00001 0020+00 1/0 0/0 0/0 .data            daObjYtaihou_METHODS */
+static actor_method_class daObjYtaihou_METHODS = {
+    (process_method_func)daObjYtaihou_create1st,
+    (process_method_func)daObjYtaihou_MoveBGDelete,
+    (process_method_func)daObjYtaihou_MoveBGExecute,
+    0,
+    (process_method_func)daObjYtaihou_MoveBGDraw,
+};
 
-/* 80BA0F44-80BA0F8C 001544 0048+00 1/0 0/0 0/0 .text            __dt__17dEvLib_callback_cFv */
-// dEvLib_callback_c::~dEvLib_callback_c() {
-extern "C" void __dt__17dEvLib_callback_cFv() {
-    // NONMATCHING
-}
-
-/* 80BA0F8C-80BA0F94 00158C 0008+00 1/0 0/0 0/0 .text            eventStart__17dEvLib_callback_cFv
- */
-// bool dEvLib_callback_c::eventStart() {
-extern "C" bool eventStart__17dEvLib_callback_cFv() {
-    return true;
-}
-
-/* 80BA0F94-80BA0F9C 001594 0008+00 2/0 0/0 0/0 .text            eventRun__17dEvLib_callback_cFv */
-// bool dEvLib_callback_c::eventRun() {
-extern "C" bool eventRun__17dEvLib_callback_cFv() {
-    return true;
-}
-
-/* 80BA0F9C-80BA0FA4 00159C 0008+00 2/0 0/0 0/0 .text            eventEnd__17dEvLib_callback_cFv */
-// bool dEvLib_callback_c::eventEnd() {
-extern "C" bool eventEnd__17dEvLib_callback_cFv() {
-    return true;
-}
+/* 80BA1250-80BA1280 -00001 0030+00 0/0 0/0 1/0 .data            g_profile_Obj_Ytaihou */
+extern actor_process_profile_definition g_profile_Obj_Ytaihou = {
+  fpcLy_CURRENT_e,        // mLayerID
+  3,                      // mListID
+  fpcPi_CURRENT_e,        // mListPrio
+  PROC_Obj_Ytaihou,       // mProcName
+  &g_fpcLf_Method.base,  // sub_method
+  sizeof(daObjYtaihou_c), // mSize
+  0,                      // mSizeOther
+  0,                      // mParameters
+  &g_fopAc_Method.base,   // sub_method
+  635,                    // mPriority
+  &daObjYtaihou_METHODS,  // sub_method
+  0x00044100,             // mStatus
+  fopAc_ACTOR_e,          // mActorType
+  fopAc_CULLBOX_CUSTOM_e, // cullType
+};
 
 /* 80BA0FA4-80BA1118 0015A4 0174+00 2/1 0/0 0/0 .text            __dt__14daObjYtaihou_cFv */
 daObjYtaihou_c::~daObjYtaihou_c() {
-    // NONMATCHING
-}
-
-/* 80BA1118-80BA1134 001718 001C+00 1/1 0/0 0/0 .text            cLib_calcTimer<s>__FPs */
-extern "C" void func_80BA1118(void* _this, s16* param_0) {
-    // NONMATCHING
-}
-
-/* 80BA1134-80BA113C 001734 0008+00 1/0 0/0 0/0 .text @1448@eventStart__14daObjYtaihou_cFv */
-static void func_80BA1134() {
-    // NONMATCHING
-}
-
-/* 80BA113C-80BA1144 00173C 0008+00 1/0 0/0 0/0 .text            @1448@__dt__14daObjYtaihou_cFv */
-static void func_80BA113C() {
     // NONMATCHING
 }
 
